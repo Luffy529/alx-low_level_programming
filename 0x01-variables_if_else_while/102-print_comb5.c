@@ -1,31 +1,47 @@
 #include <stdio.h>
-/**
- * main - prints all numbers of base 16 in lowercase.
- *
- * Return: 0
-*/
-int main(void)
-{
-	int i = 0, j = 1;
 
-	while (i < 100)
+
+/**
+ * putnumber - function that print number that consist of two digits
+ *
+ * @num:  a number which will be printed
+ *
+ * Return: nothing (void)
+ */
+void	putnumber(int num)
+{
+	putchar(num / 10 + 48);
+	putchar(num % 10 + 48);
+}
+
+/**
+ * main - Entry level
+ *
+ * Return: Always Success (0)
+ */
+int	main(void)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 99)
 	{
-	while (j < 100)
-	{
-		putchar(i / 10 + '0');
-		putchar(i % 10 + '0');
-		putchar(' ');
-		putchar(j / 10 + '0');
-		putchar(j % 10 + '0');
-		if (i != 98 || j != 99)
-	{
-		putchar(',');
-		putchar(' ');
-	}
-		j++;
-	}
-		i++;
 		j = i + 1;
+		while (j < 100)
+		{
+			putnumber(i);
+			putchar(' ');
+			putnumber(j);
+			if (i < 98 || j < 99)
+			{
+				putchar(',');
+				putchar(' ');
+			}
+			j++;
+		}
+		i++;
 	}
-		return (0);
+	putchar('\n');
+	return (0);
 }
