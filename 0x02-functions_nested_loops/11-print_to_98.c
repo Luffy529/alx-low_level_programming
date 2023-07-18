@@ -1,17 +1,28 @@
-#ifndef MAIN_H
-#define MAIN_H
+/*
+ * File: 11-print_to_98.c
+ * Auth: Brennan D Baraban
+ */
 
-int _putchar(char);
-void print_alphabet(void);
-void print_alphabet_x10(void);
-int _islower(int c);
-int _isalpha(int c);
-int print_sign(int n);
-int _abs(int);
-int print_last_digit(int);
-void jack_bauer(void);
-void times_table(void);
-int add(int, int);
-void print_to_98(int n);
-void print_times_table(int n);
-#endif
+#include <stdio.h>
+
+/**
+ * print_to_98 - Prints all natural numbers from input to 98,
+ *               in order separated by a comma followed by a space.
+ * @n: The number to begin counting at.
+ */
+void print_to_98(int n)
+{
+	if (n >= 98)
+	{
+		while (n > 98)
+			printf("%d, ", n--);
+		printf("%d\n", n);
+	}
+
+	else
+	{
+		while (n < 98)
+			printf("%d, ", n++);
+		printf("%d\n", n);
+	}
+}
