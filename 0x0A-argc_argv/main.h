@@ -5,8 +5,4 @@
 
 int _putchar(char c);
 
-#endif /* MAIN_H */tdio.h>
-
-int _putchar(char c);
-
-#endif /* MAIN_H */~
+#endif /* MAIN_H */
