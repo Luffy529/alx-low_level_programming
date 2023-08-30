@@ -1,27 +1,27 @@
 #include "main.h"
 
 /**
- * wildcmp - Compares two strings
- * @s1: Pointer to the first string
- * @s2: Pointer to the second string
- * Return: 0
+ * wildcmp - compares two strings and returns 1
+ * if the strings can be considered identical,
+ * otherwise return 0.
+ * @str1: the normal string
+ * @str2: the special string containing "*"
+ *
+ * Return: 1 if identical, else 0
  */
-
-int wildcmp(char *s1, char *s2)
+int wildcmp(char *str1, char *str2)
 {
-	if (*s1 == '\0' || *s2 == '\0')
-	{
-		if ((*s1 + '0') - (*s2 + '0') == 0)
-			return (1);
-		else
-			return (0);
-	}
+	if (*str2 == '\0' && *str1 == '\0')
+		return (1);
 
-	if (*s1 != *s2 && *s2 != '*')
+	if (*str2 == '*' && *(str2 + 1) != '\0' && *str1 == '\0')
 		return (0);
 
-	if (*s2 == '*')
-		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
+	if (*str1 == *str2)
+		return (wildcmp(str1 + 1, str2 + 1));
 
-	return (wildcmp(s1 + 1, s2 + 1));
+	if (*str2 == '*')
+		return (wildcmp(str1, str2 + 1) || wildcmp(str1 + 1, str2));
+
+	return (0);
 }
